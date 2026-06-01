@@ -29,6 +29,11 @@ sequelize.sync({ force: true }).then(async () => {
   console.log("Películas y usuario insertados ✅");
 });
 
+// 🌐 Ruta raíz
+app.get('/', (req, res) => {
+  res.send('Bienvenido a la API de Películas 🎬');
+});
+
 // 🎬 Rutas de películas
 app.get('/peliculas', async (req, res) => {
   const peliculas = await Pelicula.findAll();
@@ -83,4 +88,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
-
